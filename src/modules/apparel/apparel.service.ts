@@ -106,12 +106,18 @@ export class apparelService {
       }
 
       const isSizeAvailable = product.sizes.find((ele) => ele.size === size);
+      const quantityAvailable = isSizeAvailable?.stock_quantity;
 
-      if (!isSizeAvailable || product?.stock_quality < quantity) {
-        throw new Error(
-          `Not enough stock for apparel ${apparel_id}, size ${size}`,
-        );
+      console.log(quantityAvailable,quantity,"<<<<<<<<<<<<<<<<")
+      if (!isSizeAvailable || quantityAvailable < quantity) {
+        // throw new Error(
+        //   `Not enough stock for apparel ${apparel_id}, size ${size}`,
+        // );
+        return {
+          message : `Not enough stock for apparel ${apparel_id}, size ${size}`
+        }
       }
+  
 
       totalCost += isSizeAvailable.price * quantity;
     }

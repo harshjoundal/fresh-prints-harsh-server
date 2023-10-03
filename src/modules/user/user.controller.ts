@@ -52,7 +52,7 @@ export class userController {
     status: 500,
     description: 'Internal server error',
   })
-  @ApiBody({ type: LoginDto })
+  @ApiBody({ type: signUpDto })
   async SignUpUser(@Body() Body: signUpDto, @Req() req, @Res() res) {
     let isExist = await this.userService.findUser(Body.email);
     if (isExist) {
@@ -69,8 +69,8 @@ export class userController {
     });
 
     let token = await jwt.sign(
-      { 
-        vendor_name:user?.vendor_name,
+      {
+        vendor_name: user?.vendor_name,
         email: user?.email,
         userId: user?._Id,
       },

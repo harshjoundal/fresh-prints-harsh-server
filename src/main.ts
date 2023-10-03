@@ -13,11 +13,11 @@ async function bootstrap() {
   });
 
   const config = new DocumentBuilder()
-    .setTitle('Todo API Documentation')
+    .setTitle('fresh-prints Apparel API Documentation')
     .setDescription('API description')
     .setVersion('1.0')
     .addBearerAuth()
-    .addTag('Todo')
+    .addTag('fresh-prints Apparel')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
